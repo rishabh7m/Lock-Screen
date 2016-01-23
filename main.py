@@ -2,13 +2,22 @@
 # Shortcut Key: Alt+L 
 
 from threading import Timer
+from gi.repository import Notify
 
 import subprocess
+import time
 
 def lockScreen():
 	subprocess.check_output(["gnome-screensaver-command", "-l"])
 
-lockScreenTime = 2.5 * 60 * 60;
+def notify():
+	Notify.init("Lock Screen")
+	Notify.Notification.new("Lock Screen", "2 minutes remaining.").show()
 
-timer = Timer(lockScreenTime, lockScreen)
-timer.start()
+twoMinutes = 2 * 60;
+lockScreenTime = 2.5 * 60 * 60 - twoMinutes;
+
+time.sleep(lockScreenTime)
+notify()
+time.sleep(twoMinutes)
+lockScreen()
