@@ -14,6 +14,9 @@ def notify():
 	Notify.init("Lock Screen")
 	Notify.Notification.new("Lock Screen", "2 minutes remaining.").show()
 
+Notify.init("Lock Screen")
+Notify.Notification.new("Lock Screen", "Starting...").show()
+
 twoMinutes = 2 * 60;
 lockScreenTime = 2.5 * 60 * 60 - twoMinutes;
 
